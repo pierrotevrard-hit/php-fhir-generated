@@ -138,7 +138,7 @@ trait PHPFHIRValidationAssertionsTrait
      */
     protected function _assertMaxLength($typeName, $fieldName, $expected, $value)
     {
-        if (PHPFHIRConstants::UNLIMITED === $expected || null === $value || !is_string($value) || '' === $value || $expected <= ($cnt = strlen($value))) {
+        if (PHPFHIRConstants::UNLIMITED === $expected || null === $value || !is_string($value) || '' === $value || $expected >= ($cnt = strlen($value))) {
             return null;
         }
         return sprintf('Field "%s" on type "%s" must be no more than %d characters long, %d seen', $fieldName, $typeName, $expected, $cnt);
